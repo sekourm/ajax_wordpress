@@ -20,3 +20,22 @@ jQuery(document).ready(function($) {
 });
 
 </pre>
+
+-> function.php
+
+<pre>
+        
+function example_ajax_request() {
+ 
+    // The $_REQUEST contains all the data sent via ajax
+    if ( isset($_REQUEST) ) {
+        echo json_encode("it's work");
+    }
+     
+    // Always exit in functions echoing ajax content
+   exit;
+}
+ 
+add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
+
+</pre>
