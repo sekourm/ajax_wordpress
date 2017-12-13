@@ -48,3 +48,28 @@ add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
 add_action( 'wp_ajax_nopriv_example_ajax_request', 'example_ajax_request' );
     
 </pre>
+
+-> wordpress ajaxurl is not defined - function.php
+
+<pre>
+    
+    function example_ajax_enqueue() {
+	// Enqueue javascript on the frontend.
+	wp_enqueue_script(
+		'example-ajax-script',
+		get_template_directory_uri() . '/js/simple-ajax-example.js',
+		array('jquery')
+	);
+	// The wp_localize_script allows us to output the ajax_url path for our script to use.
+	wp_localize_script(
+		'example-ajax-script',
+		'example_ajax_obj',
+		array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) )
+	);
+}
+add_action( 'wp_enqueue_scripts', 'example_ajax_enqueue' );
+
+</pre>
+
+source -> https://wptheming.com/2013/07/simple-ajax-example/
+
