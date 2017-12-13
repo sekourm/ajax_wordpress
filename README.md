@@ -39,3 +39,12 @@ function example_ajax_request() {
 add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
 
 </pre>
+
+-> also in function.php
+
+<pre>
+
+// If you wanted to also use the function for non-logged in users (in a theme for example)
+add_action( 'wp_ajax_nopriv_example_ajax_request', 'example_ajax_request' );
+    
+</pre>
